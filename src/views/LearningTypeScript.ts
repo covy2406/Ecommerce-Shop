@@ -2,9 +2,9 @@ export interface User {
   id: number
   name: string
   email: string
-  gender: 'male' | 'female',
-  status: 'active' | 'inactive',
-  old?: number,
+  gender: 'male' | 'female'
+  status: 'active' | 'inactive'
+  old?: number
   hobbies?: string[]
 }
 
@@ -25,24 +25,24 @@ export type ApiResponseCommon<T> = {
 }
 
 // Bai 2
-export type ApiResponse<T> = 
+export type ApiResponse<T> =
   | { status: 'success'; code: number; data: T }
   | { status: 'error'; code: number; message: string }
   | { status: 'pending'; code: number }
 
-export function handleResponse <T>(response: ApiResponse<T>): T {
-  switch(response.status) {
+export function handleResponse<T>(response: ApiResponse<T>): T {
+  switch (response.status) {
     case 'success':
-      console.log('Request successful with code:', response.code);
-      return response.data;
+      console.log('Request successful with code:', response.code)
+      return response.data
     case 'error':
-      throw new Error(response.message);
+      throw new Error(response.message)
     case 'pending':
-      throw new Error('Request is still pending');
+      throw new Error('Request is still pending')
     default:
-      const _exhaustive: never = response;
-      return _exhaustive;
-      // throw new Error('Unknown response status');
+      const _exhaustive: never = response
+      return _exhaustive
+    // throw new Error('Unknown response status');
   }
 }
 
@@ -62,19 +62,19 @@ export function handleResponse <T>(response: ApiResponse<T>): T {
 // }
 
 export async function fetchData<T>(url: string): Promise<ApiResponseCommon<T>> {
-  const res = await fetch(url);
-  if(!res.ok) {
-    throw new Error("Network error");
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error('Network error')
   }
-  return res.json() as Promise<ApiResponseCommon<T>>;
+  return res.json() as Promise<ApiResponseCommon<T>>
 }
 
 export async function fetchList<T>(url: string): Promise<ApiResponseCommon<T[]>> {
-  const res = await fetch(url);
-  if(!res.ok) {
-    throw new Error("Network error");
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error('Network error')
   }
-  return res.json() as Promise<ApiResponseCommon<T[]>>;
+  return res.json() as Promise<ApiResponseCommon<T[]>>
 }
 
 // Bai 4: Generic Form Validator: using Generic + Mapped Type + Indexed Access Type.
@@ -110,21 +110,18 @@ export async function fetchList<T>(url: string): Promise<ApiResponseCommon<T[]>>
 // }
 
 export type ValidationRules<T> = {
-  [K in keyof T]: (value: T[K]) => boolean;
-};
+  [K in keyof T]: (value: T[K]) => boolean
+}
 
 // Một hàm có kiểu khai báo không phải là 'undefined', 'void' hoặc 'any' thì phải trả về một giá trị.
-export function validate<T>(
-  data: T,
-  rules: ValidationRules<T> 
-): { [K in keyof T]: boolean} {
-  const result = {} as { [K in keyof T]: boolean};
+export function validate<T>(data: T, rules: ValidationRules<T>): { [K in keyof T]: boolean } {
+  const result = {} as { [K in keyof T]: boolean }
 
-  for(const key in rules) {
-    result[key] = rules[key](data[key]);
+  for (const key in rules) {
+    result[key] = rules[key](data[key])
   }
-  
-  return result;
+
+  return result
 }
 
 // Bai 5: Type-safe Store
@@ -136,8 +133,8 @@ export type User1 = {
 
 export function CreateStore() {
   // State sẽ có kiểu là một object với key 'user' và value có thể là User1 hoặc null
-  let state: {user: User1 | null} = {
-    user: null
+  let state: { user: User1 | null } = {
+    user: null,
   }
   return {
     // Getter để truy cập vào state, trả về kiểu {user: User1 | null}
@@ -153,10 +150,8 @@ export function CreateStore() {
     // Method để xóa user, gán state.user về null
     clearUser() {
       state.user = null
-    }
+    },
   }
 }
 
 // Bai 6:
-
-

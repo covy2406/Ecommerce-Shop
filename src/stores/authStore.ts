@@ -1,11 +1,11 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import type { InterfaceSigninUser, InterfaceSigInPrams } from '@/api/signin/type'
+import type { InterfaceSigninUser } from '@/api/signin/type'
 import { signin } from '@/api/signin'
 
-interface AuthState {
-  user: InterfaceSigninUser | null
-}
+// interface AuthState {
+//   user: InterfaceSigninUser | null
+// }
 
 export const useAuthStore = defineStore('auth', () => {
   // state
@@ -57,6 +57,6 @@ export const useAuthStore = defineStore('auth', () => {
     isAuthenticated,
     login,
     logout,
-    setUser
+    setUser,
   }
 })

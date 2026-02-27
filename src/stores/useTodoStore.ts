@@ -66,16 +66,16 @@ export const useTodoStore = defineStore('todo', () => {
 
   // delete task
   function deleteTask(id: string): void {
-    tasks.value = tasks.value.filter((t) => t.id !== id);
+    tasks.value = tasks.value.filter((t) => t.id !== id)
   }
 
   // toggle task
   function toggleTask(id: string): void {
-    const task = tasks.value.find((t) => t.id === id);
-    if(!task) return;
+    const task = tasks.value.find((t) => t.id === id)
+    if (!task) return
 
-    task.completed = !task.completed;
-    task.updatedAt = new Date();
+    task.completed = !task.completed
+    task.updatedAt = new Date()
   }
 
   // set filter status

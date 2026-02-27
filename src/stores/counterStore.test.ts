@@ -1,7 +1,6 @@
-import { mount } from '@vue/test-utils';
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach } from 'vitest'
 import { useCounterStore } from '@/stores/counter'
-import { createPinia, setActivePinia } from 'pinia';
+import { createPinia, setActivePinia } from 'pinia'
 
 describe('CounterStore', () => {
   beforeEach(() => {
@@ -11,8 +10,8 @@ describe('CounterStore', () => {
 
     // tạo pinia instance mới trước mỗi test để đảm bảo state được reset
     // const pinia = createPinia();
-    setActivePinia(createPinia());
-  });
+    setActivePinia(createPinia())
+  })
   it('initial state should be 0', () => {
     const store = useCounterStore()
     expect(store.count).toBe(0)
@@ -34,4 +33,4 @@ describe('CounterStore', () => {
     store.increment()
     expect(store.doubleCount).toBe(2)
   })
-});
+})

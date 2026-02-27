@@ -1,5 +1,5 @@
 export interface InterfaceSigninUser {
-  username: string,
+  username: string
   password: string
 }
 

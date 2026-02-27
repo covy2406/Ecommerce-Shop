@@ -11,7 +11,6 @@ vue
       <RouterView />
     </div>
   </div>
-
 </template>
 
 <!-- <style scoped>

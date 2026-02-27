@@ -1,5 +1,5 @@
 /* @import './base.css'; */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Reset cơ bản */
 *,
@@ -17,7 +17,9 @@ body,
 
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
   background-color: #f9fafb; /* hoặc bỏ nếu dùng dark mode */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
