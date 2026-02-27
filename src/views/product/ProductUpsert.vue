@@ -11,7 +11,7 @@ import { watch } from 'vue'
 const route = useRoute()
 const productId = route.params.id
 
-const productDetail = useGetDetailProduct()
+const productDetailStore = useGetDetailProduct()
 
 const { handleSubmit, setValues, values } = useForm<UpdateProductSchemaType>({
   validationSchema: toTypedSchema(updateProductSchema),
@@ -19,13 +19,13 @@ const { handleSubmit, setValues, values } = useForm<UpdateProductSchemaType>({
 
 // onMounted — chạy 1 lần duy nhất khi component được mount, mục đích là lấy data về để điền vào form
 onMounted(() => {
-  productDetail.fetchProductDetail(Number(productId))
+  productDetailStore.fetchProductDetail(Number(productId))
   // setValues(productDetail?.productDetail as UpdateProductSchemaType)
 })
 
 // watch — chạy mỗi khi productDetail.productDetail thay đổi, mục đích là cập nhật lại giá trị của form khi data mới về
 watch(
-  () => productDetail.productDetail,
+  () => productDetailStore.productDetail,
   (newVal) => {
     if (newVal) {
       setValues(newVal as UpdateProductSchemaType)
@@ -49,7 +49,7 @@ const onSubmit = handleSubmit(async (values) => {
     <form
       novalidate
       @submit="onSubmit"
-      v-if="!productDetail.loading"
+      v-if="!productDetailStore.loading"
       class="max-w-2xl mx-auto bg-white rounded-md shadow-md p-6"
     >
       <p class="flex items-center justify-center text-2xl font-bold mb-4 text-blue-500">

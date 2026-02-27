@@ -8,7 +8,7 @@ export const updateProductSchema = z.object({
   description: z
     .string()
     .min(10, 'Description is required')
-    .max(200, 'Description must be at most 500 characters'),
+    .max(500, 'Description must be at most 500 characters'),
 
   category: z.string().min(5, 'Category is required'),
 
