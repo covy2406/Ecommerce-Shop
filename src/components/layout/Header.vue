@@ -20,11 +20,11 @@
             Home
           </router-link>
           <router-link
-            to="/about"
+            to="/cart"
             class="text-gray-600 hover:text-gray-800 transition-colors px-3 py-2 rounded-md text-sm font-medium"
             active-class="text-indigo-600"
           >
-            About
+            Cart
           </router-link>
           <router-link
             to="/login"
